@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -40,6 +41,12 @@ public class UserController {
         }else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response.getMessage());
         }
+    }
+
+    //get all users
+    @RequestMapping("/allUsers")
+    public List<User> getAllUsers(){
+        return userService.getAllUsers();
     }
 
     //create user

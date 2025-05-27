@@ -19,6 +19,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    //get all users
+    public List<User> getAllUsers(){
+        return userRepository.findAll();
+    }
+
     //check if user exists for login
     public Response login(String username,String password) {
         Response response = null;
