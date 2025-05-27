@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 public class ProductService {
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     @Autowired
     public ProductService(ProductRepository productRepository) {
@@ -48,5 +48,13 @@ public class ProductService {
     //delete product
     public void deleteProduct(Long id){
         productRepository.deleteById(id);
+    }
+
+    public List<Product> findByNameContaining(String name) {
+        return productRepository.findByNameContaining(name);
+    }
+
+    public List<Product> findByPriceLessThan(Double price) {
+        return productRepository.findByPriceLessThan(price);
     }
 }
